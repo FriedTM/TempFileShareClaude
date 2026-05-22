@@ -1,0 +1,76 @@
+robovac_clean_kitchen:
+  alias: Robovac - Clean Kitchen
+  sequence:
+  - target:
+      entity_id: vacuum.robovac
+    data:
+      command: '153'
+      params:
+        value: CAoCCAEQAVIA
+    action: vacuum.send_command
+  - delay: 00:00:01
+  - target:
+      entity_id: vacuum.robovac
+    data:
+      command: '152'
+      params:
+        value: BBoCCAE=
+    action: vacuum.send_command
+  description: ''
+
+mower_cancel_current_job:
+  alias: "Mower - Cancel current job"
+  sequence:
+    # 1) Stop/pause whatever it's doing
+    - service: lawn_mower.pause
+      target:
+        entity_id: lawn_mower.matts_mower_bob
+
+    # 2) Wait until it actually reports paused (avoid race conditions)
+    - wait_template: "{{ states('lawn_mower.matts_mower_bob') == 'paused' }}"
+      timeout: "00:00:20"
+      continue_on_timeout: true
+
+    # 3) Cancel the job (this is the actual cancel)
+    - service: mammotion.cancel_job
+      target:
+        entity_id: lawn_mower.matts_mower_bob
+
+mammotion_start_mow:
+  alias: "Start Mower Bob"
+  mode: single
+  sequence:
+    - action: mammotion.start_mow
+      target:
+        entity_id: lawn_mower.matts_mower_bob
+      data:
+        areas:
+          - switch.matts_mower_bob_area_area_1
+# =============================================================================
+#  Sharp RP-117 Turntable  HA MQTT sensors (SLIMMED to power/speed/tray)
+#  Merge under your existing top-level  mqtt:  key in configuration.yaml.
+# =============================================================================
+mqtt:
+  binary_sensor:
+    - name: "Turntable Power"
+      unique_id: turntable_power
+      state_topic: "control4/turntable/state/power"
+      payload_on: "true"
+      payload_off: "false"
+      device_class: power
+      icon: mdi:power
+
+    - name: "Turntable Tray Open"
+      unique_id: turntable_tray
+      state_topic: "control4/turntable/state/tray"
+      payload_on: "true"
+      payload_off: "false"
+      device_class: opening
+      icon: mdi:tray
+
+  sensor:
+    - name: "Turntable Speed"
+      unique_id: turntable_speed
+      state_topic: "control4/turntable/state/speed"
+      unit_of_measurement: "RPM"
+      icon: mdi:speedometer

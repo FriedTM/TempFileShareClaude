@@ -1,0 +1,95 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
+
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+template: !include templates.yaml
+
+input_boolean:
+  cooking_mode:
+    name: Cooking Mode
+    icon: mdi:pot-steam
+
+twilio:
+  account_sid: !secret twilio_account_sid
+  auth_token: !secret twilio_auth_token
+
+notify:
+  - name: twilio_call
+    platform: twilio_call
+    from_number: !secret twilio_from_number
+
+  - name: twilio_sms
+    platform: twilio_sms
+    from_number: !secret twilio_from_number
+
+
+logger:
+  default: warning
+  logs:
+    custom_components.robovac.vacuum: debug
+    custom_components.robovac.tuyalocalapi: debug
+
+mqtt:
+  binary_sensor:
+    - name: "Turntable Power"
+      unique_id: turntable_power
+      state_topic: "control4/turntable/state/power"
+      payload_on: "true"
+      payload_off: "false"
+      device_class: power
+      icon: mdi:power
+    - name: "Turntable Repeat"
+      unique_id: turntable_repeat
+      state_topic: "control4/turntable/state/repeat"
+      payload_on: "true"
+      payload_off: "false"
+      icon: mdi:repeat
+    - name: "Turntable Both Sides"
+      unique_id: turntable_both_sides
+      state_topic: "control4/turntable/state/both_sides"
+      payload_on: "true"
+      payload_off: "false"
+      icon: mdi:vinyl
+    - name: "Turntable Tray Open"
+      unique_id: turntable_tray
+      state_topic: "control4/turntable/state/tray"
+      payload_on: "true"
+      payload_off: "false"
+      device_class: opening
+      icon: mdi:tray
+  sensor:
+    - name: "Turntable Playback"
+      unique_id: turntable_playback
+      state_topic: "control4/turntable/state/playback"
+      icon: mdi:play-pause
+    - name: "Turntable Side"
+      unique_id: turntable_side
+      state_topic: "control4/turntable/state/side"
+      icon: mdi:disc
+    - name: "Turntable Speed"
+      unique_id: turntable_speed
+      state_topic: "control4/turntable/state/speed"
+      unit_of_measurement: "RPM"
+      icon: mdi:speedometer
+    - name: "Turntable Program"
+      unique_id: turntable_program
+      state_topic: "control4/turntable/state/program"
+      icon: mdi:format-list-numbered
+    - name: "Turntable Status"
+      unique_id: turntable_status
+      state_topic: "control4/turntable/state/status"
+      icon: mdi:information-outline
