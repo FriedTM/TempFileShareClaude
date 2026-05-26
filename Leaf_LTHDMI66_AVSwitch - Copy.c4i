@@ -1,0 +1,505 @@
+<devicedata><certified level="1" date="5/8/2012">Certified</certified><model>Leaf Matrix Driver LTHDMI66</model><name>Leaf Matrix Driver LTHDMI66</name><small>devices_sm/avswitch.gif</small><large>devices_lg/avswitch.gif</large><control>lua_gen</control><controlmethod>serial</controlmethod><OnlineCategory>avswitch</OnlineCategory><proxies><proxy proxybindingid="5001" name="Leaf AV Switch LTHDMI66">avswitch</proxy></proxies><driver>DriverWorks</driver><manufacturer>Leaf Audio</manufacturer><created>05/31/2012 7:00 AM</created><modified>05/31/2012 7:00 AM</modified><version>1</version><copyright>Copyright 2012 Nexus Technologies.  All rights reserved.</copyright><creator>Leaf Audio AFG</creator><search_type>c4:lua_gen</search_type><connections><connection><id>5001</id><type>2</type><connectionname>AV Switch</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>AVSWITCH</classname></class></classes></connection><connection><id>1</id><type>1</type><connectionname>RS-232 MAIN INPUT</connectionname><consumer>True</consumer><linelevel>False</linelevel><classes><class><classname>RS_232</classname></class></classes></connection><!-- ................................ROOMS ................................................... --><connection><id>7005</id><type>7</type><connectionname>Zone 6 Video End-Point</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>VIDEO_SELECTION</classname></class></classes></connection><connection><id>7004</id><type>7</type><connectionname>Zone 5 Video End-Point</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>VIDEO_SELECTION</classname></class></classes></connection><connection><id>7003</id><type>7</type><connectionname>Zone 4 Video End-Point</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>VIDEO_SELECTION</classname></class></classes></connection><connection><id>7002</id><type>7</type><connectionname>Zone 3 Video End-Point</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>VIDEO_SELECTION</classname></class></classes></connection><connection><id>7001</id><type>7</type><connectionname>Zone 2 Video End-Point</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>VIDEO_SELECTION</classname></class></classes></connection><connection><id>7000</id><type>7</type><connectionname>Zone 1 Video End-Point</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>VIDEO_SELECTION</classname></class></classes></connection><!-- ................................ZONES: AUDIO ............................................ --><!-- ................................Sources: AUDIO ............................................ --><!-- ................................ZONES: VIDEO ............................................ --><connection><id>2005</id><type>5</type><connectionname>AV Zone 6</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>2004</id><type>5</type><connectionname>AV Zone 5</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>2003</id><type>5</type><connectionname>AV Zone 4</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>2002</id><type>5</type><connectionname>AV Zone 3</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>2001</id><type>5</type><connectionname>AV Zone 2</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>2000</id><type>5</type><connectionname>AV Zone 1</connectionname><consumer>False</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><!-- ................................SOURCES: VIDEO ............................................ --><connection><id>1005</id><type>5</type><connectionname>Source 6</connectionname><consumer>True</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>1004</id><type>5</type><connectionname>Source 5</connectionname><consumer>True</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>1003</id><type>5</type><connectionname>Source 4</connectionname><consumer>True</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>1002</id><type>5</type><connectionname>Source 3</connectionname><consumer>True</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>1001</id><type>5</type><connectionname>Source 2</connectionname><consumer>True</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection><connection><id>1000</id><type>5</type><connectionname>Source 1</connectionname><consumer>True</consumer><linelevel>True</linelevel><classes><class><classname>HDMI</classname></class></classes></connection></connections><capabilities><can_switch_separately>False</can_switch_separately><can_switch>True</can_switch><has_audio>False</has_audio><has_audio_signal_sense>False</has_audio_signal_sense><has_discrete_input_select>True</has_discrete_input_select><has_toad_input_select>False</has_toad_input_select><has_video_signal_sense>False</has_video_signal_sense><video_consumer_count>6</video_consumer_count><video_provider_count>6</video_provider_count><serialsettings>9600 8 none 1 none</serialsettings><can_upclass>True</can_upclass><can_downclass>True</can_downclass></capabilities><conditionals /><config><power_command_delay>0</power_command_delay><power_delay>0</power_delay><power_management_method>AlwaysOn</power_management_method><documentation>Control4 certified on 5/8/2012 for software released versions: 2.2.1, 2.1.1
+
+	This driver supports the Leaf LTHDMI66.\n\nSETUP: 1-Connect RS232 cable from controller to the LTHDMI66.  2-Set dipswitches and plug in required inputs and outputs with unit powered OFF.  3-Powerup unit.\n\nPROTERTY-ZONE OFFSET: Allows for Banking with other units. Must be set to match the Bank select dipswitch on the connected unit/s. Usually set to zero\n (example; BankSelect of 9 relates to Zone offset of 54 (9 x 6))\nCOMMAND-Send Serial Command: Use this command to send any 3byte serial code to the unit. The three raw bytes that are sent are 'command' 'value' and 'rawzone'  (rawzone of 0 = physical zone 1).\nCOMMAND-Send Remote232 Data: This sends a byte to the rs232 port of the remote zone as specified.\nCOMMAND-Setup Remote232 Baud: Sets the baud rate for Send Remote232 Command. This command is only required to be sent once after powerup and is not reqired at all for bauds other than 9600 - see manual for details.\nCOMMAND-Lock Zone To HDMI Source: Use this command to 'lock' the specified 'zone' to its currently connected source. Only one 'zone' parameter is required.\nCOMMAND-UnLock Zone From HDMI Source: Use this command to 'unlock' any source connected to the specified zone (will only have an effect if it is already locked). Only one 'zone' parameter is required.</documentation><properties><property><name>ZONE BANK</name><type>RANGED_INTEGER</type><minimum>1</minimum><maximum>16</maximum><default>1</default><readonly>FALSE</readonly></property></properties><commands><command><name>Send Serial Command</name><description>Send Raw Serial Command</description><params><param><name>Command</name><type>RANGED_INTEGER</type><minimum>32</minimum><maximum>255</maximum></param><param><name>Value</name><type>RANGED_INTEGER</type><minimum>0</minimum><maximum>255</maximum></param><param><name>Zone</name><type>RANGED_INTEGER</type><minimum>0</minimum><maximum>255</maximum></param></params></command><command><name>Setup Remote232 Baud</name><description>Set the baudrate for remote rs232 port</description><params><param><name>Baud</name><type>RANGED_INTEGER</type><minimum>0</minimum><maximum>5</maximum></param><param><name>Zone</name><type>RANGED_INTEGER</type><minimum>1</minimum><maximum>6</maximum></param></params></command><command><name>Send Remote232 Data</name><description>Send a byte of data to remote rs232 port</description><params><param><name>Data</name><type>RANGED_INTEGER</type><minimum>0</minimum><maximum>255</maximum></param><param><name>Zone</name><type>RANGED_INTEGER</type><minimum>1</minimum><maximum>6</maximum></param></params></command><command><name>Lock Zone To HDMI Source</name><description>Lock Zone to currently selected HDMI Source</description><params><param><name>Zone</name><type>RANGED_INTEGER</type><minimum>1</minimum><maximum>6</maximum></param></params></command><command><name>UnLock Zone From HDMI Source</name><description>UnLock Zone From HDMI Source</description><params><param><name>Zone</name><type>RANGED_INTEGER</type><minimum>1</minimum><maximum>6</maximum></param></params></command></commands><script><![CDATA[
+				Output = 0																			--Declare and initialize global variables
+				LockMap = { 0,0,0,0,0,0,0,0 }
+				OutMap =  { 0,0,0,0,0,0,0,0 }
+				Input =  0
+				LastZoneBinding = 0
+				BindingClassInputV = 0
+				BindingClassOutputV = 0
+				BindingClassInputA = 0
+				BindingClassOutputA = 0
+				DataPos = 0
+				DataArray = {}
+				strCommandsBuf1 = nil
+				SerialDelTimer = 0
+				CmdTimer = 0
+
+
+
+
+				function ExecuteCommand(strCommand, tParams)
+				    --Process command from Director
+					local Cmd1 = nil
+					local Cmd2 = nil
+					local Cmd3 = nil
+					local Oput = 0
+					if (strCommand == "Send Serial Command") then
+						print("Send Serial Command Processing..")
+						if (tParams ~= nil) then
+							for ParamName,ParamValue in pairs(tParams) do
+								if (ParamName == "Command") then
+									Cmd1 = ParamValue
+								end
+								if (ParamName == "Value") then
+									Cmd2 = ParamValue
+								end
+								if (ParamName == "Zone") then
+									Cmd3 = ParamValue
+								end
+							end
+						end
+
+					end
+
+
+
+					if (strCommand == "Send Remote232 Data") then
+						print("Send Remote Serial Command..")
+						if (tParams ~= nil) then
+							for ParamName,ParamValue in pairs(tParams) do
+								if (ParamName == "Data") then
+									Cmd2 = ParamValue
+								end
+								if (ParamName == "Zone") then
+									Cmd3 = ParamValue - 1
+									Cmd1 = 158 --0x9E
+								end
+							end
+						end
+
+					end
+
+					if (strCommand == "Setup Remote232 Baud") then
+						print("Setup Remote Serial Baud..")
+						if (tParams ~= nil) then
+							for ParamName,ParamValue in pairs(tParams) do
+								if (ParamName == "Baud") then
+									Cmd2 = ParamValue
+								end
+								if (ParamName == "Zone") then
+									Cmd3 = ParamValue - 1
+									Cmd1 = 157 --0x9D
+								end
+							end
+						end
+
+					end
+
+					if ( Cmd1 ~= nil ) then
+						C4:SendToSerial(1,string.char(Cmd1,Cmd2,Cmd3))			--Send Command Out
+					end
+
+					if (strCommand == "Lock Zone To HDMI Source") then
+						--print("Locking Zone To Currently Displayed Source..")
+						if (tParams ~= nil) then
+							for ParamName,ParamValue in pairs(tParams) do
+
+								if ((ParamName ~= nil) and (ParamValue ~= nil) ) then
+									if ((ParamName == "Zone") and (ParamValue > "0") and (ParamValue < "5")) then
+										ParamVal = tonumber(ParamValue) - 1
+										if (LockMap[ParamVal] ~= nil) then
+											if ( (LockMap[ParamVal] > 0) and (LockMap[ParamVal] < 5)) then
+												Oput = ParamVal + ( 6 * (Properties["ZONE BANK"]-1)) --up translate to bank select
+												if Oput > 255 then
+													Oput = 255
+													print("error: Zone & Bank Excceds Maximum")
+												elseif Oput < 0 then
+													Oput = 255
+													print("error: Zone & Bank Less Than Zero.")
+												end
+
+												print("SERIAL (Zone Lock): 93, S=" .. LockMap[ParamVal].. ", Z=" .. Oput)
+												C4:SendToSerial(1,string.char(93,LockMap[ParamVal],Oput))
+												C4:SendToSerial(1,string.char(52,0,GetZone("2000"))) --Query Video Zone
+												C4:SendToSerial(1,string.char(52,0,GetZone("2001"))) --Query Video Zone
+												C4:SendToSerial(1,string.char(52,0,GetZone("2002"))) --Query Video Zone
+												C4:SendToSerial(1,string.char(52,0,GetZone("2003"))) --Query Video Zone
+												C4:SendToSerial(1,string.char(52,0,GetZone("2004"))) --Query Video Zone
+												C4:SendToSerial(1,string.char(52,0,GetZone("2005"))) --Query Video Zone
+
+											else
+												print(">>CAN'T LOCK SOURCE (either source is off or invalid) - " .. LockMap[ParamVal])
+											end
+										else
+											print(">>No_Valid Source Map - Turn All ROOMS on to an initial source")
+										end
+									else
+										print(">>No Valid Zone Value - Probably a Composer Programming Error")
+									end
+								end
+							end
+						end
+					end
+
+
+					if (strCommand == "UnLock Zone From HDMI Source") then
+						--print("Locking Zone To Currently Displayed Source..")
+						if (tParams ~= nil) then
+							for ParamName,ParamValue in pairs(tParams) do
+
+								if ((ParamName ~= nil) and (ParamValue ~= nil) ) then
+									if ((ParamName == "Zone") and (ParamValue > "0") and (ParamValue < "5")) then
+										ParamVal = tonumber(ParamValue) - 1
+										Oput = ParamVal + ( 6 * (Properties["ZONE BANK"]-1)) --up translate to bank select
+										if Oput > 255 then
+											Oput = 255
+											print("error: Zone & Bank Excceds Maximum")
+										elseif Oput < 0 then
+											Oput = 255
+											print("error: Zone & Bank Less Than Zero.")
+										end
+										LockMap[ParamVal] = 0 --UPDATE MAP
+										--print("ZONE LOCK: Source "  .. LockMap[ParamVal].. " Output " .. Oput+1)
+										print("SERIAL (Zone Unlock/Off): 71, S=0, Z=" .. Oput)
+										C4:SendToSerial(1,string.char(71,0,Oput))
+										C4:SendToSerial(1,string.char(52,0,GetZone("2000"))) --Query Video Zone
+										C4:SendToSerial(1,string.char(52,0,GetZone("2001"))) --Query Video Zone
+										C4:SendToSerial(1,string.char(52,0,GetZone("2002"))) --Query Video Zone
+										C4:SendToSerial(1,string.char(52,0,GetZone("2003"))) --Query Video Zone
+									else
+										print(">>No Valid Zone Value - Probably a Composer Programming Error")
+									end
+								end
+							end
+						end
+					end
+
+				end
+
+
+
+				function GetLocalSource(ParamValue)
+
+					InputLocal = (ParamValue % 1000) + 1
+
+
+					Input = InputLocal + ( 6 * (Properties["ZONE BANK"]-1))
+					if Input > 256 then
+						InputLocal = -1							-- minus one is error
+						print("error: Source Excceds Maximum")
+					elseif Input < 1 then
+						InputLocal = -1
+						print("error: Source Less Than One.")
+					end
+
+					return InputLocal
+				end
+
+
+				function GetZone(ParamValue)
+
+
+					OutputLocal = (ParamValue % 1000)
+					--print("OutputLocal:"..OutputLocal )
+					LastZoneBinding = tonumber(ParamValue)
+					--print("Zone Binding:"..LastZoneBinding )
+
+					Output = OutputLocal + ( 6 * (Properties["ZONE BANK"]-1))
+					if Output > 255 then
+						Output = -1
+						print("error: Zone Excceds Maximum")
+					elseif Output < 0 then
+						Output = -1
+						print("error: Zone Less Than Zero.")
+					end
+					return Output
+				end
+
+
+
+
+
+
+
+				function ReceivedFromProxy (idBinding,strCommand,tParams)
+
+					local InputLocal = 0
+					local Commandz = 0
+					local Aact = 0
+					local Vact = 0
+					local BindInput = 0 --These are the Biniding Type of recent command if 4000,3000,7000
+					local BindOuput = 0
+					local OutputLcl = 0
+
+
+					if (tParams ~= nil) then
+						print("Proxy Command Received By Driver: " .. strCommand)
+						if (strCommand == "SET_INPUT") then
+							Aact = 0
+							Vact = 0
+							BindInput = 0
+							BindOuput = 0
+							OutputLcl = 100 --invalid
+							for ParamName,ParamValue in pairs(tParams) do
+
+								print(ParamName,ParamValue)
+
+								if ((ParamName == "CLASS") and (ParamValue == "HDMI")) 	then 	Vact = 1 	end
+								--if ((ParamName == "CLASS") and (ParamValue == "STEREO")) 	then 	Vact = 1 	end --switch main HDMI to normal input if C4 selects this source
+
+								if (ParamName == "INPUT") then
+									BindInput = ParamValue
+									InputLocal = GetLocalSource(ParamValue)
+								end
+
+								if (ParamName == "OUTPUT") then
+									BindOutput = ParamValue
+									Output = GetZone(ParamValue)
+									OutputLcl = tonumber(ParamValue % 1000)
+								end
+							end
+
+
+							-- THIS IS ROOM CONDITION DONT SWITCH SEPERATE
+							if ( (BindOutput > "6999") and (BindOutput < "8000") ) then
+								Aact = 1
+								Vact = 1
+							end
+
+							if ( (InputLocal > 0) and (Output >= 0) and (OutputLcl >=0) and (OutputLcl < 6) ) then
+								if (Vact   ==  1) then
+
+									BindingClassInputA  = BindInput
+									BindingClassInputV = BindInput
+									BindingClassOutputA = BindOutput
+									BindingClassOutputV = BindOutput
+									if ( LockMap[OutputLcl] ~= tonumber(InputLocal) ) then  --DONT SEND DOUBLE COMMAND
+
+										Commandz = 72
+										print("SERIAL (Zone On): " .. Commandz .. ", S=" .. InputLocal .. ", Z=" .. Output)
+										C4:SendToSerial(1,string.char(Commandz,InputLocal,Output))
+										--C4:SendToSerial(2,string.char(Commandz,InputLocal,Output)) --SEND TO THRU
+
+										C4:SendToSerial(1,string.char(52,0,Output)) --Query Video Zone
+
+										C4:SendToProxy(5001,"INPUT_OUTPUT_CHANGED", {INPUT = BindingClassInputV, OUTPUT = BindingClassOutputV})
+										--C4:SendToProxy(5001,"INPUT_OUTPUT_CHANGED", {INPUT = BindingClassInputV, OUTPUT = (4000 + OutputLcl)}) --TELL C4 that the audio outs follow HDMI outs.
+									end
+									LockMap[OutputLcl] = tonumber(InputLocal)
+
+								end
+
+							else print("error: BAD COMMAND")
+							end
+
+						end
+
+
+
+
+
+
+						if (strCommand == "CONNECT_OUTPUT") then
+							print("Unsupported at this time")
+						end
+
+
+
+					if (strCommand == "QUERY_OUTPUT_STATUS") then
+							print("QUERY not yet supported")
+							for ParamName,ParamValue in pairs(tParams) do
+								print(ParamName,ParamValue)
+
+								--zones video
+								if ((ParamValue > "1999") and (ParamValue < "3000")) then
+
+								end
+
+								--zones audio
+								if ((ParamValue > "3999") and (ParamValue < "5000")) then
+
+								end
+
+
+
+
+							end
+						end
+
+
+						if (strCommand == "ON") then
+							--print("ON not yet supported")
+							--for ParamName,ParamValue in pairs(tParams) do
+							--	print(ParamName,ParamValue)
+							--end
+						end
+
+						if (strCommand == "OFF") then
+							--print("OFF not yet supported")
+							--for ParamName,ParamValue in pairs(tParams) do
+							--	print(ParamName,ParamValue)
+							--end
+						end
+
+
+
+
+
+
+						if (strCommand == "DISCONNECT_OUTPUT") then
+							--print("Disconnect Zone")
+							Aact = 0
+							Vact = 0
+							BindInput = 0
+							BindOuput = 0
+							for ParamName,ParamValue in pairs(tParams) do
+								print(ParamName,ParamValue)
+
+								if ((ParamName == "CLASS") and (ParamValue == "HDMI")) 	then 	Vact = 1 		end
+								--use the ROOM audio selection to actually turn off zone output...
+								--this will mean that video only rooms will never turn off the output(may be ok??)
+								--This trade off is really due to C4 not seperating the Video and audio down HDMI link.
+								--if ((ParamName == "CLASS") and (ParamValue == "AUDIO_SELECTION")) 	then 	Vact = 1 		end
+								--FOR NOW THIS IS OVER RIDDEN (dont disconnect outputs!)
+								--Vact = 0
+
+
+
+								if (ParamName == "OUTPUT") then
+									BindOutput = ParamValue
+									Output = GetZone(ParamValue)
+									OutputLcl = tonumber(ParamValue % 1000)
+								end
+							end
+
+
+
+
+
+
+
+							-- THIS IS ROOM CONDITION THEREFORE DO NOT IGNORE
+							--if ( (BindOutput > "6999") and (BindOutput < "8000") ) then
+							--	Aact = 1
+							--	Vact = 1
+							--end
+
+
+							if ( (Output < 0) or (Output > 255) ) then
+								print("error: BAD COMMAND")
+							else
+
+								if ( (Vact == 1)  )  then
+									Commandz = 71
+									BindingClassInputA  = BindInput
+									BindingClassInputV  = BindInput
+									BindingClassOutputA = BindOutput
+									BindingClassOutputV = BindOutput
+									LockMap[OutputLcl] = 0 --UPDATE MAP
+									print("SERIAL (Zone Off): " .. Commandz .. ", S=" .. InputLocal .. ", Z=" .. Output)
+									C4:SendToSerial(1,string.char(Commandz,0,Output))
+									--C4:SendToSerial(2,string.char(Commandz,0,Output)) --SEND TO THRU
+
+									C4:SendToSerial(1,string.char(52,0,Output)) --Query Video Zone
+									C4:SendToProxy(5001,"INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = BindingClassOutputV})
+									--C4:SendToProxy(5001,"INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = (4000 + OutputLcl)}) --TELL C4 TO MIRROR DISCONNECT TO AUDIO OUTS.
+								end
+
+
+							end
+						end
+
+					end
+
+
+				end
+
+
+
+
+				-- True read back need to use src and zone as checks before notification
+				function sendNotify(id,src,zone)
+					if 		(id == 53) then --zonevidsrc
+						if (  (zone >= ( 6 * (Properties["ZONE BANK"]-1)))   and   (zone < ( 6 * (Properties["ZONE BANK"])))  ) then
+						    --SHIFT ZONE DOWN TO SYSTEM...
+							zoneout = zone - ( 6 * (Properties["ZONE BANK"]-1))
+							if (src>0) then
+							--C4:SendToProxy(5001,"INPUT_OUTPUT_CHANGED", {INPUT = 1000 + src - 1, OUTPUT = 2000 + zoneout})
+							print("Notify: VIDEO - ".. 1000 + src - 1 .. "," ..2000 + zoneout .. ", S=" .. src .. ", Z=" .. zone)
+							else
+							--C4:SendToProxy(5001,"INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = 2000 + zoneout})
+							--DUMMY SOURCE... THIS IS PROB NOT A GOOD IDEA???
+							print("Notify: VIDEO - source OFF , ".. 2000 + zoneout .. ", S=-1" .. ", Z=" .. zone)
+							end
+						else
+							print("Notify: Readback Zone unmatched - ".. 1000 + src - 1 .. "," ..2000 + zone .. ", S=" .. src .. ", Z=" .. zone)
+						end
+					end
+				end
+
+
+
+--<controlmethod>ir</controlmethod>
+
+
+
+				function OnTimerExpired(idTimer)
+					if (idTimer == CmdTimer) 		then	CmdTimer 		= 0	end
+					if (idTimer == SerialDelTimer) 	then
+						SerialDelTimer 	= 0
+						if (strCommandsBuf1 ~= nil) then
+							C4:SendToSerial(1,strCommandsBuf1)
+							strCommandsBuf1 = nil
+							if (strCommandsBuf2 ~= nil) then
+								strCommandsBuf1 = strCommandsBuf2
+								strCommandsBuf2 = nil
+								StartSerailDelTimer()	--start this timer again for second buff
+							end
+						end		--Send Command Out (DELAYED SEND)
+
+					end
+
+				end
+
+
+				function StartCmdTimer()
+					if (CmdTimer) then CmdTimer = C4:KillTimer(CmdTimer) end
+					CmdTimer = C4:AddTimer(400,"MILLISECONDS")
+				end
+
+
+
+				--Timeout between serial buffers received
+				function StartSerailDelTimer()
+					if (SerialDelTimer) then SerialDelTimer = C4:KillTimer(SerialDelTimer) end
+					SerialDelTimer = C4:AddTimer(200,"MILLISECONDS")
+				end
+
+
+				--replace character located at position 'pos' witin 'str' with character 'r'
+				function replace_char(pos, str, r)
+					return str:sub(1, pos-1) .. r .. str:sub(pos+1)
+				end
+
+
+				-- Receives Serial Data in tripplets. Will Notify application on new switch.
+				function ReceivedFromSerial(idBinding,strData)
+
+					--print("RAW".. idBinding .. ":")
+					--for i=1,string.len(strData) do
+					--		print(string.byte(strData,i))
+					--end
+					if (idBinding == 1) then
+						if (CmdTimer == 0) then DataPos = 0 end
+						StartCmdTimer()
+						for i=1,string.len(strData) do
+							DataArray[DataPos] = string.byte(strData,i)
+							DataPos = DataPos + 1
+						end
+
+
+
+						if 	( (tonumber(DataPos) % 3) == 0 ) then
+							for i=0,tonumber(DataPos)-3,3 do
+								sendNotify(DataArray[i],DataArray[i+1],DataArray[i+2])
+							end
+							DataPos = 0
+						end
+
+
+						-- IF WE RECEIVED SOME SERIAL DATA FROM MAIN UNIT THEN TELL C4 TO SEND THIS SAME DATA TO THRU PORT
+						--C4:SendToSerial(2,strData)
+					end
+					if (idBinding == 2) then
+						--MAY NEED TO DECODE THIS
+						--C4:SendToSerial(1,strData)
+					end
+
+				end
+
+
+
+
+			]]></script></config><driverdocumentation><category name="certified" description="Certification">Control4 certified on 5/8/2012 for software released versions: 2.2.1, 2.1.1</category></driverdocumentation></devicedata>
